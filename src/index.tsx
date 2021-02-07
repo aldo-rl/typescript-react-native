@@ -13,7 +13,6 @@ import { ContextProvider } from './context'
 const AppRoot = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={'#fafafa'} />
       <ContextProvider>
         <NavigationContainer>
           <Navigation />

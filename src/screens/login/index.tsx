@@ -12,6 +12,10 @@ import { useNavigation } from '@react-navigation/native'
 // Context
 import { context } from '../../context'
 
+// Wrapper
+import { TranslucentView } from '../../containers/TranslucentView'
+
+
 // Styles
 import styles from './style'
 
@@ -24,56 +28,56 @@ const Login = () => {
   const [pass, setPass] = useState(String)
 
   return (
-    <>
-      <StatusBar
-        backgroundColor={theme.bg}
-        barStyle={theme.isDark ? 'light-content' : 'dark-content'}
-      />
-      <View style={[styles.login, {
+
+    <TranslucentView
+      style={[styles.login, {
         backgroundColor: theme.bg
-      }]}>
+      }]}
+      spacingsattusBar
+    >
 
-        <Text style={[styles.title, {
+
+      <Text style={[styles.title, {
+        color: theme.text
+      }]}>SIGN IN</Text>
+
+      <TextInput
+        style={[styles.input, {
+          backgroundColor: theme.bgHighlighted,
           color: theme.text
-        }]}>SIGN IN</Text>
-
-        <TextInput
-          style={[styles.input, {
-            backgroundColor: theme.bgHighlighted,
-            color: theme.text
-          }]}
-          onChangeText={text => setUsername(text)}
-          value={username}
-        />
+        }]}
+        onChangeText={text => setUsername(text)}
+        value={username}
+      />
 
 
-        <TextInput
-          style={[styles.input, {
-            backgroundColor: theme.bgHighlighted,
-            color: theme.text
-          }]}
-          onChangeText={text => setPass(text)}
-          value={pass}
-          secureTextEntry
-        />
+      <TextInput
+        style={[styles.input, {
+          backgroundColor: theme.bgHighlighted,
+          color: theme.text
+        }]}
+        onChangeText={text => setPass(text)}
+        value={pass}
+        secureTextEntry
+      />
 
-        <TouchableOpacity
-          onPress={() => navigation.reset({
-            index: 0,
-            routes: [
-              { name: 'home' }
-            ],
-          })}
-          style={[styles.touchable, {
-            backgroundColor: theme.marker,
-          }]}
-        >
-          <Text style={[styles.touchableText, {
-            color: theme.isDark ? theme.bg : theme.text,
-          }]}>Login</Text>
-        </TouchableOpacity>
-      </View>
-    </>
+      <TouchableOpacity
+        onPress={() => navigation.reset({
+          index: 0,
+          routes: [
+            { name: 'home' }
+          ],
+        })}
+        style={[styles.touchable, {
+          backgroundColor: theme.marker,
+        }]}
+      >
+        <Text style={[styles.touchableText, {
+          color: theme.isDark ? theme.bg : theme.text,
+        }]}>Login</Text>
+      </TouchableOpacity>
+    </TranslucentView>
+
   )
 }
 

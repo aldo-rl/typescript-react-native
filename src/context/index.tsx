@@ -15,7 +15,7 @@ import {
 import {
   saveTheme,
   getTheme
-} from '../storage'
+} from '../asyncStorage'
 
 
 interface StateContext {
@@ -47,12 +47,10 @@ const ContextProvider = ({ children }: any) => {
 
     getTheme()
       .then(res => {
-        console.log('red: ', res)
         if (res === undefined) saveTheme(false)
         dispatchTheme({ type: res ? 'DARK_MODE' : 'LIGHT_MODE' })
       })
       .catch(err => {
-        console.log('error')
       })
   }, [])
 

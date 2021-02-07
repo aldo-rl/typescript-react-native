@@ -12,7 +12,7 @@ import { context } from '../../context'
 // AsyncStorage
 import {
   saveTheme,
-} from '../../storage'
+} from '../../asyncStorage'
 
 
 const ToggleTheme = () => {
