@@ -1,38 +1,66 @@
 import React, {
   createContext,
-  useReducer
+  useReducer,
+  useEffect,
 } from 'react'
 
 
+// ActionsTypes
 import {
-  initialstate,
+  initialState,
   themeReducer
 } from './reducers/theme'
 
+// AsyncStorage
+import {
+  saveTheme,
+  getTheme
+} from '../storage'
+
 
 interface StateContext {
-  stateTheme: {
+  theme: {
     isDark: boolean,
+    marker: string,
+    text: string,
+    textLow: string,
     bg: string,
     bgHighlighted: string,
-    text: string,
-    marker: string
+    highligh: string
   },
   dispatchTheme: React.Dispatch<ActionTypeTheme>
 }
 
-const initialStateTheme: StateContext = {
-  stateTheme: initialstate,
+const initialTheme: StateContext = {
+  theme: initialState,
   dispatchTheme: () => { },
 }
 
-const context = createContext<StateContext>(initialStateTheme)
+
+
+
+
+const context = createContext<StateContext>(initialTheme)
 const ContextProvider = ({ children }: any) => {
 
-  const [stateTheme, dispatchTheme] = useReducer(themeReducer, initialstate)
+  useEffect(() => {
+
+    getTheme()
+      .then(res => {
+        console.log('red: ', res)
+        if (res === undefined) saveTheme(false)
+        dispatchTheme({ type: res ? 'DARK_MODE' : 'LIGHT_MODE' })
+      })
+      .catch(err => {
+        console.log('error')
+      })
+  }, [])
+
+
+  const [theme, dispatchTheme] = useReducer(themeReducer, initialState)
   return (
     <context.Provider value={{
-      stateTheme,
+      theme,
       dispatchTheme
     }}>
       {children}

@@ -9,15 +9,29 @@ import {
 // context
 import { context } from '../../context'
 
-const ToggleTheme = () => {
-  const { stateTheme, dispatchTheme } = useContext(context)
+// AsyncStorage
+import {
+  saveTheme,
+} from '../../storage'
 
-  // console.log('stateTheme -> ', stateTheme)
+
+const ToggleTheme = () => {
+  const { theme, dispatchTheme } = useContext(context)
+
+
+  const handlerTheme = () => {
+    saveTheme(!theme.isDark).then(() => {
+
+      dispatchTheme({
+        type: theme.isDark ? 'LIGHT_MODE' : 'DARK_MODE'
+      })
+    })
+  }
   return (
     <View>
-      <Text>current theme - {stateTheme.bg}</Text>
+      <Text>current theme - {theme.bg}</Text>
       <TouchableOpacity
-        onPress={() => dispatchTheme({ type: stateTheme.isDark ? 'LIGHT_MODE' : 'DARK_MODE' })}>
+        onPress={handlerTheme}>
         <Text>ToggleTheme</Text>
       </TouchableOpacity>
     </View>

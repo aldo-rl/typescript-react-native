@@ -1,31 +1,39 @@
-const initialstate = {
+const initialState = {
   isDark: false,
-  bg: '#26383C',
-  bgHighlighted: '#13282C',
-  text: '#DACCB7',
-  marker: '#D05238',
+  marker: '#FEC390',
+  text: '#2D2D2D',
+  textLow: '#7E7E7E',
+  bg: '#F2F2F2',
+  bgHighlighted: '#E9E9E9',
+  highligh: '#D7D7D7'
+
 }
 
-const themeReducer = (state: typeof initialstate, action: ActionTypeTheme) => {
+const themeReducer = (state: typeof initialState, action: ActionTypeTheme) => {
+  console.log('actionType', action.type)
   switch (action.type) {
     case 'DARK_MODE':
       return {
         ...state,
         isDark: true,
-        bg: '#26383C',
-        bgHighlighted: '#13282C',
-        text: '#DACCB7',
-        marker: '#D05238',
+        marker: '#FFCB9E',
+        text: '#F2F2F2',
+        textLow: '#AAAAAA',
+        bg: '#2D2D2D',
+        bgHighlighted: '#424242',
+        highligh: '#555555'
       }
 
     case 'LIGHT_MODE':
       return {
         ...state,
         isDark: false,
-        bg: '#FAF8F4',
-        bgHighlighted: '#F1F0ED',
-        text: '#26383C',
-        marker: '#D05238',
+        marker: '#FEC390',
+        text: '#2D2D2D',
+        textLow: '#7E7E7E',
+        bg: '#F2F2F2',
+        bgHighlighted: '#E9E9E9',
+        highligh: '#D7D7D7'
       }
 
     default:
@@ -34,6 +42,6 @@ const themeReducer = (state: typeof initialstate, action: ActionTypeTheme) => {
 }
 
 export {
-  initialstate,
+  initialState,
   themeReducer,
 }
