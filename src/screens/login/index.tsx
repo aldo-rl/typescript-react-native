@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native'
 import { context } from '../../context'
 
 // Wrapper
-import { TranslucentView } from '../../containers/TranslucentView'
+import { WrapperView } from '../../containers/wrapperView'
 
 
 // Styles
@@ -29,7 +29,7 @@ const Login = () => {
 
   return (
 
-    <TranslucentView
+    <WrapperView
       style={[styles.login, {
         backgroundColor: theme.bg
       }]}
@@ -76,7 +76,7 @@ const Login = () => {
           color: theme.isDark ? theme.bg : theme.text,
         }]}>Login</Text>
       </TouchableOpacity>
-    </TranslucentView>
+    </WrapperView>
 
   )
 }

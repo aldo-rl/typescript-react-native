@@ -5,11 +5,11 @@ import {
   Platform
 } from 'react-native'
 
-import { context } from '../context'
+import { context } from '../../context'
 
 type ReactNode = JSX.Element[] | React.ReactChild | React.ReactFragment
 
-interface TranslucentViewProps {
+interface WrapperViewProps {
   children: ReactNode,
   style?: Array<object> | object,
   spacingsattusBar?: boolean
@@ -19,7 +19,7 @@ interface TranslucentViewProps {
 
 const ios = Platform.OS === 'ios'
 
-const TranslucentView = ({ children, style, spacingsattusBar }: TranslucentViewProps) => {
+const WrapperView = ({ children, style, spacingsattusBar }: WrapperViewProps) => {
   const { theme } = useContext(context)
   return (
     <>
@@ -43,5 +43,5 @@ const TranslucentView = ({ children, style, spacingsattusBar }: TranslucentViewP
 }
 
 export {
-  TranslucentView
+  WrapperView
 }

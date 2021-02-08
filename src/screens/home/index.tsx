@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {
-  View,
-  Text,
-  TouchableOpacity
+  View
 } from 'react-native'
 
 // context
@@ -12,7 +10,7 @@ import { context } from '../../context'
 import ToggleTheme from '../../components/ToggleTheme'
 
 // Wrapper
-import { TranslucentView } from '../../containers/TranslucentView'
+import { WrapperView } from '../../containers/wrapperView'
 
 
 const Home = () => {
@@ -21,15 +19,15 @@ const Home = () => {
 
   return (
 
-    <TranslucentView
+    <WrapperView
       style={{ flex: 1, backgroundColor: theme.bg }}
       spacingsattusBar
     >
-      <View style={{ padding: 20, backgroundColor: theme.bg, elevation: 10, }}>
+      <View style={{ padding: 20, backgroundColor: theme.bg }}>
 
         <ToggleTheme />
       </View>
-    </TranslucentView>
+    </WrapperView>
   )
 }
 
